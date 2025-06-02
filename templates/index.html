@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Imagem para PDF</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="card shadow p-4">
+            <h2 class="mb-4">Converter Imagens para PDF</h2>
+            {% if mensagem %}
+                <div class="alert alert-danger">{{ mensagem }}</div>
+            {% endif %}
+            <form action="/converter" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="file" class="form-label">Escolha uma ou mais imagens:</label>
+                    <input class="form-control" type="file" name="files" accept="image/*" multiple required>
+                </div>
+                <div class="mb-3">
+                    <label for="nome_pdf" class="form-label">Nome do arquivo PDF:</label>
+                    <input class="form-control" type="text" name="nome_pdf" placeholder="ex: meu_arquivo.pdf" required>
+                </div>
+                <button class="btn btn-primary" type="submit">Converter para PDF</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
